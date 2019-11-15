@@ -1,0 +1,40 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: alpine-pvc-10g
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alpine-10g
+  labels:
+    app: alpine-10g
+spec:
+  selector:
+    matchLabels:
+      app: alpine-10g
+  template:
+    metadata:
+      labels:
+        app: alpine-10g
+    spec:
+      containers:
+      - name: alpine
+        image: alpine
+        args:
+        - sh
+        - -c
+        - sleep 30d
+        volumeMounts:
+          - mountPath: "/tmp"
+            name: alpine-pvc-10g
+      volumes:
+      - name: alpine-pvc-10g
+        persistentVolumeClaim:
+          claimName: alpine-pvc-10g

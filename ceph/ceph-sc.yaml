@@ -6,7 +6,7 @@ metadata:
     storageclass.kubernetes.io/is-default-class: "true"
 provisioner: ceph.com/rbd
 parameters:
-  monitors: 10.20.131.55:6789 # Change to your Ceph monitor's IP address
+  monitors: 10.20.131.55:6789,10.20.131.56:6789,10.20.131.57:6789 
   adminId: admin
   adminSecretName: ceph-secret
   adminSecretNamespace: kube-system

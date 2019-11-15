@@ -1,0 +1,110 @@
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: ceph-claim-1
+spec:
+  accessModes:     
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi 
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: ceph-claim-2
+spec:
+  accessModes:     
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi 
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: ceph-claim-3
+spec:
+  accessModes:     
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi 
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: ceph-claim-4
+spec:
+  accessModes:     
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi 
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: ceph-claim-5
+spec:
+  accessModes:     
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi 
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: ceph-claim-6
+spec:
+  accessModes:     
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi 
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: ceph-claim-7
+spec:
+  accessModes:     
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi 
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: ceph-claim-8
+spec:
+  accessModes:     
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi 
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: ceph-claim-9
+spec:
+  accessModes:     
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi 
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: ceph-claim-10
+spec:
+  accessModes:     
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi 

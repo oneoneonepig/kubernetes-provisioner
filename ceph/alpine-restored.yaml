@@ -1,0 +1,70 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: restored
+spec:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 10Gi
+  persistentVolumeReclaimPolicy: Delete
+  rbd:
+    fsType: ext4
+    image: restored # --image
+    keyring: /etc/ceph/keyring
+    monitors:
+    - 10.20.131.55:6789
+    - 10.20.131.56:6789
+    - 10.20.131.57:6789
+    pool: kube # --pool
+    secretRef:
+      name: ceph-user-secret
+      namespace: default
+    user: kube
+  volumeMode: Filesystem
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: alpine-pvc-10g
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  volumeMode: Filesystem
+  volumeName: restored
+  storageClassName: ""
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alpine-10g
+  labels:
+    app: alpine-10g
+spec:
+  selector:
+    matchLabels:
+      app: alpine-10g
+  template:
+    metadata:
+      labels:
+        app: alpine-10g
+    spec:
+      containers:
+      - name: alpine
+        image: alpine
+        args:
+        - sh
+        - -c
+        - sleep 30d
+        volumeMounts:
+          - mountPath: "/tmp"
+            name: alpine-pvc-10g
+      volumes:
+      - name: alpine-pvc-10g
+        persistentVolumeClaim:
+          claimName: alpine-pvc-10g
